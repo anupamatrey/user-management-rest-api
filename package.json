@@ -1,0 +1,28 @@
+{
+  "name": "user-api",
+  "version": "1.0.0",
+  "description": "User Manage Rest API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Anupam Sharma",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^3.0.0",
+    "config": "^1.30.0",
+    "dcrypt": "0.0.2",
+    "debug": "^3.1.0",
+    "express": "^4.16.3",
+    "joi": "^13.4.0",
+    "joi-password-complexity": "^2.0.1",
+    "jsontoxml": "^1.0.0",
+    "jsonwebtoken": "^8.3.0",
+    "lodash": "^4.17.10",
+    "mongoose": "^5.1.7",
+    "morgan": "^1.9.0",
+    "nodeman": "^1.1.2",
+    "swagger-stats": "^0.95.5",
+    "uuid": "^3.3.2"
+  }
+}
