@@ -10,13 +10,14 @@ const userSchema = new mongoose.Schema({
     userId: { type: String, required: true, maxlength: 100 },
     creationDate: { type: Date, default: Date.now },
     accountStatus: Boolean,
-    lastLogin: { type: Date, default: Date.now }
+    lastLogin: { type: Date, default: Date.now },
+    isAdmin : Boolean
 });
 console.log('****************************************************************');
 console.log('User Schema Build Sucessfully');
 
 userSchema.methods.generateAuthTokens = function () {
-    const jwtToken = jwt.sign({ email: this.email }, config.get('jwtPrivateKey'));
+    const jwtToken = jwt.sign({ email: this.email,isAdmin:this.isAdmin }, config.get('jwtPrivateKey'));
     return jwtToken;
 }
 

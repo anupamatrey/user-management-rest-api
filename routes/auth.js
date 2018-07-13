@@ -4,6 +4,7 @@ const Joi = require('joi');
 const logger = require('../logger/logger');
 var User = require('../models/user');
 var auth = require('../middleware/auth');
+var admin = require('../middleware/admin');
 var jsonxml = require('jsontoxml');
 const _ = require('lodash');
 const bcrypt = require('bcrypt');
@@ -58,7 +59,7 @@ router.route('/api/login')
         }
     })
 router.route('/api/login/v1')
-    .post(auth, async function (req, res) {
+    .post([auth,admin], async function (req, res) {
         console.log('********** Login User **************');
         const schema = {
             password: Joi.string().required().min(5).max(255),
