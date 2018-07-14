@@ -92,7 +92,7 @@ router.route('/api/login/v1')
             const jwtToken = userExist.generateAuthTokens();
             res.send(jwtToken);
         } catch (ex) {
-            console.log(ex.message);
+            next(ex);
 
         }
     })

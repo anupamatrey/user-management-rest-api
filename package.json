@@ -4,16 +4,22 @@
   "description": "User Manage Rest API",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": "8.10.0"
   },
   "author": "Anupam Sharma",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^3.0.0",
+    "compression": "^1.7.2",
     "config": "^1.30.0",
     "dcrypt": "0.0.2",
     "debug": "^3.1.0",
     "express": "^4.16.3",
+    "helmet": "^3.12.1",
     "joi": "^13.4.0",
     "joi-password-complexity": "^2.0.1",
     "jsontoxml": "^1.0.0",

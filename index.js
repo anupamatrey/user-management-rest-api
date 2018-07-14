@@ -5,7 +5,14 @@ const morgan = require('morgan');
 var mongoose = require('mongoose');
 var User = require('./models/user');
 const router = require('./routes/route');
+const error = require('./middleware/error');
 const auth = require('./routes/auth');
+//const prod = require('./middleware/prod')(app);
+
+//https://fierce-plains-86052.heroku.com/api/login/v1
+//https://fierce-plains-86052.herokuapp.com/api/login
+
+
 console.log('****************************************************************');
 console.log('User Management Rest API with Node.js');
 console.log('****************************************************************');
@@ -14,7 +21,7 @@ const application = express();
 application.use(express.json());
 
 if (!config.get('jwtPrivateKey')) {
-    console.log('FATAL ERROR jwtPrivateKey is not defined  '+process.env.user_jwtPrivateKey);
+    console.log('FATAL ERROR jwtPrivateKey is not defined  ' + process.env.user_jwtPrivateKey);
     process.exit(1);
 }
 
@@ -22,6 +29,7 @@ if (!config.get('jwtPrivateKey')) {
 //Register Route
 application.use('/', router);
 application.use('/', auth);
+application.use(error);
 const port = process.env.PORT || 3000  //Set the Application Port
 
 //MongoDB Setup
