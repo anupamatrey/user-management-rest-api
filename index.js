@@ -25,7 +25,7 @@ if (!config.get('jwtPrivateKey')) {
     process.exit(1);
 }
 
-
+//
 //Register Route
 application.use('/', router);
 application.use('/', auth);
