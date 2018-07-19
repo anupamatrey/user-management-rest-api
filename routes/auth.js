@@ -9,6 +9,7 @@ var jsonxml = require('jsontoxml');
 const _ = require('lodash');
 const bcrypt = require('bcrypt');
 const config = require('config');
+const winston = require('winston');
 var router = express.Router();
 router.use(logger);
 
@@ -49,12 +50,12 @@ router.route('/api/login')
             if (!validUser)
                 return res.status(400).send('Invalid Email or Password.');
             else
-                console.log('********** User Login sucessfully **************');
+            winston.info('********** User Login sucessfully **************');
             //const jwtToken = jwt.sign({ email: user.email }, config.get('jwtPrivateKey'));
             const jwtToken = userExist.generateAuthTokens();
             res.send(jwtToken);
         } catch (ex) {
-            console.log(ex.message);
+            winston.error(ex.message);
 
         }
     })
@@ -87,7 +88,7 @@ router.route('/api/login/v1')
             if (!validUser)
                 return res.status(400).send('Invalid Email or Password.');
             else
-                console.log('********** User Login sucessfully **************');
+            winston.info('********** User Login sucessfully **************');
             //const jwtToken = jwt.sign({ email: user.email }, config.get('jwtPrivateKey'));
             const jwtToken = userExist.generateAuthTokens();
             res.send(jwtToken);

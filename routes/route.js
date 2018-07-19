@@ -7,15 +7,14 @@ const _ = require('lodash');
 const bcrypt = require('bcrypt');
 const config = require('config');
 const jwt = require('jsonwebtoken');
-//var swStats = require('swagger-stats');
-//var apiSpec = require('swagger.json');
+const winston = require('winston');
+
 //Routes Rest API
 var router = express.Router();
-// middleware to use for all requests
-router.use(logger);
-//router.use(swStats.getMiddleware({swaggerSpec:apiSpec}));
+
 
 router.get('/user/v1', (req, res) => {
+    throw new Error('Something goes wrong');
     res.json({ message: 'User Management Rest API Version 1.0' });
 });
 
@@ -36,7 +35,6 @@ router.route('/api/users')
 
         }
         var xml = jsonxml(user);
-        console.log(xml);
         res.send(user);
 
     })
@@ -77,7 +75,7 @@ router.route('/api/users')
             const jwtToken = userExist.generateAuthTokens();
             res.header('X-auth-header',jwtToken).send(_.pick(user, ['userId', 'email']));
         } catch (ex) {
-            console.log(ex.message);
+            winston.error(ex.message);
 
         }
     })
