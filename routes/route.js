@@ -22,6 +22,7 @@ router.get('/user/v2', (req, res) => {
     res.json({ message: 'User Management Rest API Version 2.0' });
 });
 
+
 router.route('/api/users')
     .get(async function (req, res) {
         const sort = req.query.sort;
